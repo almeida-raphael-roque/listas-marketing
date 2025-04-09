@@ -1,5 +1,6 @@
 SELECT DISTINCT 
 cat.nome AS cliente,
+cat.pessoa AS pessoa,
 en.fone1 AS fone1,
 en.fone2 AS fone2,
 en.e_mail AS email,
@@ -24,6 +25,7 @@ UNION ALL
 
 SELECT DISTINCT 
 cat.nome AS cliente,
+cat.pessoa AS pessoa,
 en.fone1 AS fone1,
 en.fone2 AS fone2,
 en.e_mail AS email,
@@ -48,6 +50,7 @@ UNION ALL
 
 SELECT DISTINCT 
 cat.nome AS cliente,
+cat.pessoa AS pessoa,
 en.fone1 AS fone1,
 en.fone2 AS fone2,
 en.e_mail AS email,
