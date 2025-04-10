@@ -29,4 +29,5 @@ if __name__ == '__main__':
     class_instance = Loader()
     load_clients = class_instance.load_file("clientes_ativos", "clientes_ativos")
     load_clients = class_instance.load_file("clientes_ativos_pessoa", "clientes_ativos_pessoa") 
-    load_clients = class_instance.load_file("clientes_frota", "clientes_frota") 
+    load_clients = class_instance.load_file("clientes_frota", "clientes_frota")
+    load_clients = class_instance.load_file("clientes_produtos", "clientes_produtos")  
