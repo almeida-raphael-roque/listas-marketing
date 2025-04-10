@@ -26,19 +26,23 @@ SELECT DISTINCT
     
 from silver.insurance_registration ir
         left outer join silver.insurance_reg_set irs on irs.parent = ir.id
+        left outer join silver.INSURANCE_REG_SET_COVERAGE irsc ON irsc.PARENT = irs.ID
+        left outer join silver.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
+       
+        left outer join silver.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
+        left outer join silver.insurance_trailer itt on itt.id = irsc.ID_TRAILER
+        left outer join silver.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
+        left outer join silver.TIPO_VEICULO tv on tv.CODIGO = iv.CODE_TYPE_VEHICLE
+
+        left outer join silver.insurance_status iss on iss.id = irs.id_status
+        left outer join silver.insurance_status isss on isss.id = irsc.id_status        
+ 
         left outer join silver.cliente clie on clie.codigo = ir.CUSTOMER_ID
         left outer join silver.catalogo cat on cat.cnpj_cpf = clie.cnpj_cpf
         left outer join silver.representante r on r.codigo = irs.id_unity
         left outer join silver.catalogo cata on cata.cnpj_cpf = r.cnpj_cpf
-        left outer join silver.insurance_status iss on iss.id = irs.id_status
-        left outer join silver.INSURANCE_REG_SET_COVERAGE irsc ON irsc.PARENT = irs.ID
-        left outer join silver.INSURANCE_VEHICLE iv on iv.ID = irsc.ID_VEHICLE
-        left outer join silver.TIPO_VEICULO tv on tv.CODIGO = iv.CODE_TYPE_VEHICLE 
-        left outer join silver.INSURANCE_REG_SET_COV_TRAILER irsct on irsct.PARENT = irsc.ID
-        left outer join silver.INSURANCE_TRAILER it on it.ID = irsct.ID_TRAILER
-        left outer join silver.insurance_trailer itt on itt.id = irsc.ID_TRAILER
         left outer join silver.vendedor v on v.CODIGO = irs.ID_CONSULTANT
-        left outer join silver.insurance_status isss on isss.id = irsc.id_status
+
         left outer join silver.price_list_benefits plb on plb.id = irsc.id_price_list
         left outer join silver.type_category tc on tc.id = plb.id_type_category
         left outer join silver.category c on c.id = tc.id_category
